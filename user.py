@@ -1,5 +1,5 @@
 import csv
-from FileHandler import FileHandler
+from file_handler import FileHandler
 
 
 class User:

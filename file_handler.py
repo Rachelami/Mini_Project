@@ -1,4 +1,5 @@
 import csv
+from csv import DictWriter
 
 
 class FileHandler:
@@ -28,8 +29,27 @@ class FileHandler:
         except Exception as error:
             print ("There is an error: " + str(error))
 
+    def append_to_csv(file_name, dict_of_elem, field_names):
+        try:
+            for i in file.employee:
+                if dict_of_elem.get("id") == i.get("id"):
+                    print("Id already exist")
+                    exit()
+            with open(file_name, 'a+', newline='') as write_obj:                   # Open file in append mode
+                dict_writer = DictWriter(write_obj, fieldnames=field_names)        # Create a writer object from csv module
+                dict_writer.writerow(dict_of_elem)                                 # Add dictionary as wor in the csv
+                print("Printed successfully")
+        except Exception as e:
+            print(e)
+
+
 
 file = FileHandler()
 file.load_from_csv_file("C:/Users/rache/PycharmProjects/ITC Python/mini_project/user.csv")
 print(file.employee)
 
+
+row_dict = {'id': '78', 'first_name': 'Yoel', 'last_name': 'Ouday', 'password': 175, 'position': 'student', 'salary': 170, 'role': 'student'}
+field_names = ['id', 'first_name', 'last_name', 'password', 'position', 'salary', 'role']
+
+FileHandler.append_to_csv("C:/Users/rache/PycharmProjects/ITC Python/mini_project/user.csv", row_dict, field_names)
