@@ -45,11 +45,11 @@ class FileHandler:
 
 
 file = FileHandler()
-file.load_from_csv_file("C:/Users/rache/PycharmProjects/ITC Python/mini_project/user.csv")
+file.load_from_csv_file("user.csv")
 print(file.employee)
 
 
 row_dict = {'id': '78', 'first_name': 'Yoel', 'last_name': 'Ouday', 'password': 175, 'position': 'student', 'salary': 170, 'role': 'student'}
 field_names = ['id', 'first_name', 'last_name', 'password', 'position', 'salary', 'role']
 
-FileHandler.append_to_csv("C:/Users/rache/PycharmProjects/ITC Python/mini_project/user.csv", row_dict, field_names)
+FileHandler.append_to_csv("user.csv", row_dict, field_names)
