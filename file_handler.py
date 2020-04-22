@@ -43,6 +43,7 @@ class FileHandler:
             print(e)
 
     def remove_from_csv(number):
+        try:
             filePath = "user.csv"
             with open(filePath, 'w', newline='') as csvfile:
                 fieldnames = ['id', 'first_name', 'last_name', 'password', 'position', 'salary', 'role']
@@ -55,15 +56,44 @@ class FileHandler:
                 csv_writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 for line in new_list:
                     csv_writer.writerow(line)
+        except Exception as e:
+            print(e)
+
+    def update_csv(csv_file_name,id,new_row):
+        try:
+            with open(csv_file_name, 'w', newline='') as csvfile:
+                fieldnames = ['id', 'first_name', 'last_name', 'password', 'position', 'salary', 'role']
+                new_list = []
+                check = []
+                for row in file.employee:
+                    if id != row.get("id"):
+                        new_list.append(row)
+                    else:
+                        new_row['id'] = id
+                        new_list.append(new_row)
+                        check.append(new_row)
+                        print("Id " + id + " is uploaded")
+                if check == []:
+                    print("Id not found")
+
+                csv_writer = csv.writer(csvfile)
+                csv_writer.writerow(fieldnames)
+                csv_writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                for line in new_list:
+                    csv_writer.writerow(line)
+        except Exception as e:
+            print(e)
 
 file = FileHandler()
 file.load_from_csv_file("user.csv")
 print(file.employee)
 
 
-row_dict = {'id': "19", 'first_name': 'Yoel', 'last_name': 'Ouday', 'password': 175, 'position': 'student', 'salary': 170, 'role': 'student'}
+row_dict = {'id': "4", 'first_name': 'Yoel', 'last_name': 'Ouday', 'password': 175, 'position': 'student', 'salary': 170, 'role': 'student'}
 field_names = ['id', 'first_name', 'last_name', 'password', 'position', 'salary', 'role']
 
 #FileHandler.append_to_csv("user.csv", row_dict, field_names)
 
-FileHandler.remove_from_csv("19")
+# FileHandler.remove_from_csv("19")
+
+FileHandler.update_csv("user.csv","13",row_dict)
