@@ -42,14 +42,28 @@ class FileHandler:
         except Exception as e:
             print(e)
 
-
+    def remove_from_csv(number):
+            filePath = "user.csv"
+            with open(filePath, 'w', newline='') as csvfile:
+                fieldnames = ['id', 'first_name', 'last_name', 'password', 'position', 'salary', 'role']
+                new_list = []
+                for row in file.employee:
+                    if number != row.get("id"):
+                        new_list.append(row)
+                csv_writer = csv.writer(csvfile)
+                csv_writer.writerow(fieldnames)
+                csv_writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                for line in new_list:
+                    csv_writer.writerow(line)
 
 file = FileHandler()
 file.load_from_csv_file("user.csv")
 print(file.employee)
 
 
-row_dict = {'id': '78', 'first_name': 'Yoel', 'last_name': 'Ouday', 'password': 175, 'position': 'student', 'salary': 170, 'role': 'student'}
+row_dict = {'id': "19", 'first_name': 'Yoel', 'last_name': 'Ouday', 'password': 175, 'position': 'student', 'salary': 170, 'role': 'student'}
 field_names = ['id', 'first_name', 'last_name', 'password', 'position', 'salary', 'role']
 
-FileHandler.append_to_csv("user.csv", row_dict, field_names)
+#FileHandler.append_to_csv("user.csv", row_dict, field_names)
+
+FileHandler.remove_from_csv("19")
