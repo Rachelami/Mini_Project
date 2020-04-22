@@ -40,6 +40,33 @@ class CarLot:
     except Exception as e:
         print(e)
 
+    def add_to_fleet(external_csv_fleet_file):
+        try:
+            with open(external_csv_fleet_file) as csv_file:
+                csv_reader = csv.reader(csv_file, delimiter=',')
+                line_count = 0
+                for row in csv_reader:
+                    if line_count == 0:
+                        print(f' {", ".join(row)}')
+                        line_count += 1
+                    else:
+                        Vehicle = {
+                            "id": row[0],
+                            "brand": row[1],
+                            "owner": row[2],
+                            "last_test": row[3],
+                            "color": row[4],
+                            "door_count": row[5],
+                        }
+                        print(Vehicle)
+                        line_count += 1
+                print("******************")
+                print(f'We have {line_count-1} Vehicle.')
 
-CarLot= CarLot()
-CarLot.update_salary_by_name(114,"amiram")
+        except Exception as e:
+            print(e)
+
+
+# CarLot= CarLot()
+# CarLot.update_salary_by_name(114,"amiram")
+CarLot.add_to_fleet("Vehicle.csv")
