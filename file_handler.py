@@ -85,8 +85,8 @@ class FileHandler:
             print(e)
 
 file = FileHandler()
-file.load_from_csv_file("user.csv")
-print(file.employee)
+# file.load_from_csv_file("user.csv")
+# print(file.employee)
 
 
 row_dict = {'id': "4", 'first_name': 'Yoel', 'last_name': 'Ouday', 'password': 175, 'position': 'student', 'salary': 170, 'role': 'student'}
@@ -96,4 +96,4 @@ field_names = ['id', 'first_name', 'last_name', 'password', 'position', 'salary'
 
 # FileHandler.remove_from_csv("19")
 
-FileHandler.update_csv("user.csv","13",row_dict)
+# FileHandler.update_csv("user.csv","4",row_dict)
