@@ -1,8 +1,8 @@
 id,first_name,last_name,password,position,salary,role
 1,amir,bernstein,12345678,teacher,10,teacher
-2,hen,biton,12345678,admin,120,admin
-3,amiram,bernsdtein,12345678,teacher,114,teacher
-4,amira,bernsdtein,12345678,teacher,10,teacher
+2,hen,biton,12345678,admin,10,admin
+3,amira,bernsdtein,12345678,teacher,10,teacher
+4,Yoel,Ouday,175,student,170,student
 5,amira,bernsdtein,12345678,teacher,10,teacher
 6,amira,bernsdtein,12345678,teacher,10,teacher
 7,amira,bernsdtein,12345678,teacher,10,teacher

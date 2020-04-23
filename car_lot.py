@@ -66,7 +66,24 @@ class CarLot:
         except Exception as e:
             print(e)
 
+    def get_all_cars_by_brand(brand):
+        try:
+            with open("Vehicle.csv") as csv_file:
+                csv_reader = csv.reader(csv_file, delimiter=',')
+                vehicle_counter = 0
+                for row in csv_reader:
+                    # print(row[1])
+                    if row[1] == brand:
+                        # print(row)
+                        # print(row.get("brand"))
+                        vehicle_counter +=1
+                print("******************")
+                print(f'We have {vehicle_counter} {brand}.')
+        except Exception as e:
+            print(e)
+
 
 # CarLot= CarLot()
 # CarLot.update_salary_by_name(114,"amiram")
-CarLot.add_to_fleet("Vehicle.csv")
+# CarLot.add_to_fleet("Vehicle.csv")
+CarLot.get_all_cars_by_brand("toyota")
