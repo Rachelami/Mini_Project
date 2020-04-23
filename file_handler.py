@@ -84,9 +84,41 @@ class FileHandler:
         except Exception as e:
             print(e)
 
+    def sort_by_key(file_name, key, direction):
+        try:
+            list_to_sort=[]
+            for row in file.employee:
+                if row.get(key).isnumeric() == True:
+                    list_to_sort.append(int(row.get(key)))
+                else:
+                    list_to_sort.append(row.get(key))
+            sorted_key = sorted(list_to_sort)
+
+            sorted_list =[]
+            for i in sorted_key:
+                for row in file.employee:
+                    if row.get(key).isnumeric() == True:
+                            if i == int(row.get(key)):
+                                sorted_list.append(row)
+                    elif i == row.get(key):
+                        sorted_list.append(row)
+
+            if direction == "reverse":
+                reverse_list = []
+                for row in sorted_list:
+                    reverse_list.insert(0, row)
+                print(reverse_list)
+
+            else:
+                print(sorted_list)
+        except Exception as e:
+            print(e)
+
+
+
 file = FileHandler()
 file.load_from_csv_file("user.csv")
-print(file.employee)
+# print(file.employee)
 
 
 row_dict = {'id': "44", 'first_name': 'Yoel', 'last_name': 'Ouday', 'password': 175, 'position': 'student', 'salary': 170, 'role': 'student'}
@@ -97,3 +129,5 @@ field_names = ['id', 'first_name', 'last_name', 'password', 'position', 'salary'
 # FileHandler.remove_from_csv("19")
 
 #FileHandler.update_csv("user.csv","4",row_dict)
+
+FileHandler.sort_by_key("user.csv","id","reverse")
